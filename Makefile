@@ -1,8 +1,8 @@
-default: build
+default: build run
 
 run: build
-	@sudo ./sentinel
+	@sudo ./bin/sentinel
 
 build: 
-	@go build
+	@go build -o bin/sentinel
 
