@@ -38,8 +38,8 @@ func runAsShell(c *cli.Context) error {
 	shell.Println("")
 	shell.Println("Welcome to Sentinel")
 
-	var nmap = net.NewScanner("scan", "help")
-	var gitter = git.NewGitter("gitter", "help")
+	var nmap = net.NewScanner("scan", "TODO help")
+	var gitter = git.NewGitter("gitter", "TODO help")
 	shell.AddCmd(nmap.GetIShellCommand())
 	shell.AddCmd(gitter.GetIShellCommand())
 
