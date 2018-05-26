@@ -78,61 +78,42 @@ func (g *Gitter) Run(c *ishell.Context) (string, error) {
 }
 
 func (g *Gitter) unlockKeys() error {
-	var stdout bytes.Buffer
-	var stderr bytes.Buffer
-
 	cmd := exec.Command("ssh-add", "-t", "90")
+	_, err := g.runCommand(cmd)
+	return err
+}
+
+func (g *Gitter) clone(repoRemote, repoName string) (string, error) {
+	cmd := exec.Command("git", "clone", "-q", repoRemote, repoName)
+	out, err := g.runCommand(cmd)
+	if err != nil {
+		return "", err
+	}
+
+	if len(out) == 0 {
+		return "OK\n", nil
+	}
+	return out, nil
+}
+
+func (g *Gitter) pull(repoPath string) (string, error) {
+	cmd := exec.Command("git", "-C", repoPath, "pull", "origin", "master")
+	return g.runCommand(cmd)
+}
+
+func (g *Gitter) runCommand(cmd *exec.Cmd) (string, error) {
+	var stdout, stderr bytes.Buffer
+
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
 	cmd.Stdin = os.Stdin
 	if err := cmd.Run(); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (g *Gitter) clone(repoRemote, repoName string) (string, error) {
-	var stdout bytes.Buffer
-	var stderr bytes.Buffer
-
-	cmd := exec.Command("git", "clone", "-q", repoRemote, repoName)
-	cmd.Stdout = &stdout
-	cmd.Stderr = &stderr
-	err := cmd.Run()
-	if err != nil {
 		return "", err
 	}
 
-	/*
-		if len(stderr.String()) != 0 {
-			return errors.New(stderr.String())
-		}
-	*/
-
-	if len(stdout.String()) == 0 {
-		return "OK\n", nil
-	}
-	return stdout.String(), nil
-}
-
-func (g *Gitter) pull(repoPath string) (string, error) {
-	var stdout bytes.Buffer
-	var stderr bytes.Buffer
-
-	cmd := exec.Command("git", "-C", repoPath, "pull", "origin", "master")
-	cmd.Stdout = &stdout
-	cmd.Stderr = &stderr
-	err := cmd.Run()
-	if err != nil {
-		return "", err
-	}
-
-	/*
-		if len(stderr.String()) != 0 {
-			return errors.New(stderr.String())
-		}
-	*/
+	//if len(stderr.String()) != 0 {
+	//	return errors.New(stderr.String())
+	//}
 
 	return stdout.String(), nil
 }
