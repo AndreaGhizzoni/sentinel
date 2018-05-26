@@ -1,8 +1,8 @@
 default: run
 
 run: build
-	@cd bin; ./sentinel
+	@cd bin; ./sentinel shell
 
-build: 
+build:
 	@go build -o bin/sentinel
-
+	@cp settings.json bin
