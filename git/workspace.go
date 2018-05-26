@@ -37,9 +37,9 @@ func NewWorkspace() (*Workspace, error) {
 }
 
 func (w *Workspace) String() string {
-	json, err := json.MarshalIndent(w, "  ", "  ")
+	j, err := json.MarshalIndent(w, "  ", "  ")
 	if err != nil {
 		return err.Error()
 	}
-	return string(json)
+	return string(j)
 }
