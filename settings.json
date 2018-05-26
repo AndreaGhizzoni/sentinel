@@ -1,0 +1,12 @@
+{
+  "base":"/home/andrea/Documents/workspace-test",
+  "languages":[
+    {
+      "name":"java",
+      "repositories": {
+        "JDrive":"git@github.com:AndreaGhizzoni/JDrive.git",
+        "graph":"git@github.com:AndreaGhizzoni/graph.git"
+      }
+    }
+  ]
+}
