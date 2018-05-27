@@ -1,12 +1,10 @@
 package git
 
 import (
-	"bytes"
 	"fmt"
 	"github.com/abiosoft/ishell"
 	"github.com/fatih/color"
 	"log"
-	"os/exec"
 )
 
 type Gitter struct {
@@ -87,14 +85,16 @@ func (g *Gitter) Run() (string, error) {
 }
 
 func (g *Gitter) unlockKeys() error {
-	cmd := exec.Command("ssh-add", "-t", "90")
-	_, err := g.runCommand(cmd)
+	cmd := sshAddCommand
+	cmd.Args = sshAddArgs
+	_, err := runCommand(cmd)
 	return err
 }
 
 func (g *Gitter) clone(repoRemote, localRepoName string) (string, error) {
-	cmd := exec.Command("git", "clone", "-q", repoRemote, localRepoName)
-	out, err := g.runCommand(cmd)
+	cmd := gitCommand
+	cmd.Args = []string{"clone", "-q", repoRemote, localRepoName}
+	out, err := runCommand(cmd)
 	if err != nil {
 		return "", err
 	}
@@ -106,24 +106,9 @@ func (g *Gitter) clone(repoRemote, localRepoName string) (string, error) {
 }
 
 func (g *Gitter) pull(repoPath string) (string, error) {
-	cmd := exec.Command("git", "-C", repoPath, "pull", "origin", "master")
-	return g.runCommand(cmd)
-}
-
-func (g *Gitter) runCommand(cmd *exec.Cmd) (string, error) {
-	var stdout, stderr bytes.Buffer
-
-	cmd.Stdout = &stdout
-	cmd.Stderr = &stderr
-	if err := cmd.Run(); err != nil {
-		return "", err
-	}
-
-	//if len(stderr.String()) != 0 {
-	//	return errors.New(stderr.String())
-	//}
-
-	return stdout.String(), nil
+	cmd := gitCommand
+	cmd.Args = []string{"-C", repoPath, "pull", "origin", "master"}
+	return runCommand(cmd)
 }
 
 func (g *Gitter) run(c *ishell.Context) {
