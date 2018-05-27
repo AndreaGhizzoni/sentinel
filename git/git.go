@@ -6,7 +6,6 @@ import (
 	"github.com/abiosoft/ishell"
 	"github.com/fatih/color"
 	"log"
-	"os"
 	"os/exec"
 )
 
@@ -116,7 +115,6 @@ func (g *Gitter) runCommand(cmd *exec.Cmd) (string, error) {
 
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
-	cmd.Stdin = os.Stdin
 	if err := cmd.Run(); err != nil {
 		return "", err
 	}
