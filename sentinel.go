@@ -9,6 +9,18 @@ import (
 	"sort"
 )
 
+const (
+	name    = "sentinel"
+	version = "0.0.001"
+
+	usage     = "TODO"
+	usageText = "TODO"
+
+	// commands
+	shellCommand = "shell"
+	shellUsage   = "TODO usage"
+)
+
 func main() {
 	app := cli.NewApp()
 	app.Name = name
