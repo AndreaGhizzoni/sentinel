@@ -9,6 +9,7 @@ var sshAddCommand = exec.Command("ssh-add")
 var sshAddArgs = []string{"-t", "90"}
 
 var gitCommand = exec.Command("git")
+var goCommand = exec.Command("go get")
 
 func runCommand(cmd *exec.Cmd) (string, error) {
 	var stdout, stderr bytes.Buffer
