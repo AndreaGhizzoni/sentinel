@@ -3,6 +3,7 @@
   "languages":[
     {
       "name":"java",
+      "command":"git",
       "repositories": {
         "JDrive":"git@github.com:AndreaGhizzoni/JDrive.git",
         "graph":"git@github.com:AndreaGhizzoni/graph.git"
