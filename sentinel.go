@@ -44,7 +44,7 @@ func main() {
 	app.Run(os.Args)
 }
 
-func runAsShell(c *cli.Context) error {
+func runAsShell(c *cli.Context) {
 	shell := ishell.New()
 
 	shell.Println("")
@@ -56,5 +56,4 @@ func runAsShell(c *cli.Context) error {
 	shell.AddCmd(gitter.GetIShellCommand())
 
 	shell.Run()
-	return nil
 }
