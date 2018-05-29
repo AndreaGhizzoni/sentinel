@@ -1,4 +1,4 @@
-package git
+package gitter
 
 type Language struct {
 	Name         string            `json:"name"`

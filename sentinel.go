@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/AndreaGhizzoni/sentinel/git"
+	"github.com/AndreaGhizzoni/sentinel/gitter"
 	"github.com/AndreaGhizzoni/sentinel/net"
 	"github.com/abiosoft/ishell"
 	"github.com/urfave/cli"
@@ -51,7 +51,7 @@ func runAsShell(c *cli.Context) {
 	shell.Println("Welcome to Sentinel")
 
 	var nmap = net.NewScanner("scan", "TODO help")
-	var gitter = git.NewGitter("gitter", "TODO help")
+	var gitter = gitter.NewGitter("gitter", "TODO help")
 	shell.AddCmd(nmap.GetIShellCommand())
 	shell.AddCmd(gitter.GetIShellCommand())
 
