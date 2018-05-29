@@ -68,10 +68,10 @@ func (g *Gitter) Run() (string, error) {
 			var out string
 			if folderNotExists(repoPath) {
 				g.log("[cloning] " + repoRemote + " -> " + repoPath + " ... ")
-				out, err = g.clone(repoRemote, repoPath)
+				out, err = g.clone(language.Command, repoRemote, repoPath)
 			} else {
 				g.log("[pulling] " + repoPath + " ... ")
-				out, err = g.pull(repoPath)
+				out, err = g.pull(language.Command, repoPath)
 			}
 			g.log(out + "\n")
 
@@ -85,16 +85,19 @@ func (g *Gitter) Run() (string, error) {
 }
 
 func (g *Gitter) unlockKeys() error {
-	cmd := sshAddCommand
-	cmd.Args = sshAddArgs
+	cmd, _ := getCommand("ssh-add")
+	cmd.Args = append(cmd.Args, "-t", "90")
 	_, err := runCommand(cmd)
 	return err
 }
 
-func (g *Gitter) clone(repoRemote, localRepoName string) (string, error) {
-	cmd := gitCommand
-	cmd.Args = []string{"clone", "-q", repoRemote, localRepoName}
-	out, err := runCommand(cmd)
+func (g *Gitter) clone(cmd, repoRemote, localRepoName string) (string, error) {
+	gitCmd, err := getCommand(cmd)
+	if err != nil {
+		return "", err
+	}
+	gitCmd.Args = append(gitCmd.Args, "clone", "-q", repoRemote, localRepoName)
+	out, err := runCommand(gitCmd)
 	if err != nil {
 		return "", err
 	}
@@ -105,10 +108,14 @@ func (g *Gitter) clone(repoRemote, localRepoName string) (string, error) {
 	return out, nil
 }
 
-func (g *Gitter) pull(repoPath string) (string, error) {
-	cmd := gitCommand
-	cmd.Args = []string{"-C", repoPath, "pull", "origin", "master"}
-	return runCommand(cmd)
+func (g *Gitter) pull(cmd, repoPath string) (string, error) {
+	gitCmd, err := getCommand(cmd)
+	if err != nil {
+		return "", err
+	}
+	gitCmd.Args = append(gitCmd.Args, "-C", repoPath, "pull", "origin",
+		"master")
+	return runCommand(gitCmd)
 }
 
 func (g *Gitter) run(c *ishell.Context) {
