@@ -7,7 +7,7 @@ import (
 	"os/exec"
 )
 
-var Out = "0"
+var AttachInput = "0"
 
 func getCommand(cmd string) (*exec.Cmd, error) {
 	switch cmd {
@@ -27,7 +27,7 @@ func runCommand(cmd *exec.Cmd) (string, error) {
 
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
-	if Out == "0" {
+	if AttachInput == "0" {
 		cmd.Stdin = os.Stdin
 	}
 	if err := cmd.Run(); err != nil {

@@ -22,7 +22,7 @@ const (
 )
 
 func readEnvironment() {
-	gitter.Out = os.Getenv("SSH_GRAPHIC_INPUT")
+	gitter.AttachInput = os.Getenv("SSH_GRAPHIC_INPUT")
 }
 
 func main() {
