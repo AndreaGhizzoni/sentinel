@@ -22,7 +22,24 @@
         "Simple-Logger":"git@github.com:AndreaGhizzoni/Simple-Logger.git",
         "Monitoring":"git@github.com:AndreaGhizzoni/Monitoring.git",
         "IOUtil":"git@github.com:AndreaGhizzoni/IOUtil.git",
-        "JXSwingPlus":"git@github.com:AndreaGhizzoni/JXSwingPlus.git",
+        "JXSwingPlus":"git@github.com:AndreaGhizzoni/JXSwingPlus.git"
+      }
+    },
+    {
+      "name":"go",
+      "command":"go get",
+      "repositories": {
+        "sentinel":"github.com/AndreaGhizzoni/sentinel",
+        "zenium":"github.com/AndreaGhizzoni/zenium",
+        "factorial":"github.com/AndreaGhizzoni/factorial",
+        "independent-set":"github.com/AndreaGhizzoni/independent-set",
+        "coins-change":"github.com/AndreaGhizzoni/coins-change",
+        "film-scan":"github.com/AndreaGhizzoni/film-scan",
+        "LCS":"github.com/AndreaGhizzoni/LCS",
+        "gin-app":"github.com/AndreaGhizzoni/gin-app",
+        "go-docker":"github.com/AndreaGhizzoni/go-docker",
+        "gos":"github.com/AndreaGhizzoni/gos",
+        "go-introduction":"github.com/AndreaGhizzoni/go-introduction",
       }
     }
   ]
