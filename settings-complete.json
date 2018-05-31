@@ -1,0 +1,29 @@
+{
+  "base":"/home/andrea/Documents/workspace-test",
+  "languages":[
+    {
+      "name":"java",
+      "command":"git",
+      "repositories": {
+        "it.unitn.disi.gef":"git@github.com:AndreaGhizzoni/it.unitn.disi.gef.git",
+        "it.disi.unitn.emf.model":"git@github.com:AndreaGhizzoni/it.disi.unitn.emf.model.git",
+        "it.disi.unitn.rcptest":"git@github.com:AndreaGhizzoni/it.disi.unitn.rcptest.git",
+        "it.unitn.disi.firstplugin":"git@github.com:AndreaGhizzoni/it.unitn.disi.firstplugin.git",
+
+        "graph":"git@github.com:AndreaGhizzoni/graph.git",
+        "tree":"git@github.com:AndreaGhizzoni/tree.git",
+        "sudoku":"git@github.com:AndreaGhizzoni/sudoku.git",
+        "subsetK":"git@github.com:AndreaGhizzoni/subsetK.git",
+        "JDrive":"git@github.com:AndreaGhizzoni/JDrive.git",
+        "TestEncryptSerializer":"git@github.com:AndreaGhizzoni/TestEncryptSerialize.git",
+        "ASDPlayGround":"git@github.com:AndreaGhizzoni/ASDPlayground.git",
+        "ApplicationUtil":"git@github.com:AndreaGhizzoni/ApplicationUtil.git",
+        "Network-Util":"git@github.com:AndreaGhizzoni/Network-Util.git",
+        "Simple-Logger":"git@github.com:AndreaGhizzoni/Simple-Logger.git",
+        "Monitoring":"git@github.com:AndreaGhizzoni/Monitoring.git",
+        "IOUtil":"git@github.com:AndreaGhizzoni/IOUtil.git",
+        "JXSwingPlus":"git@github.com:AndreaGhizzoni/JXSwingPlus.git",
+      }
+    }
+  ]
+}

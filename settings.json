@@ -5,8 +5,10 @@
       "name":"java",
       "command":"git",
       "repositories": {
-        "JDrive":"git@github.com:AndreaGhizzoni/JDrive.git",
-        "graph":"git@github.com:AndreaGhizzoni/graph.git"
+        "graph":"git@github.com:AndreaGhizzoni/graph.git",
+        "tree":"git@github.com:AndreaGhizzoni/tree.git",
+        "sudoku":"git@github.com:AndreaGhizzoni/sudoku.git",
+        "subsetK":"git@github.com:AndreaGhizzoni/subsetK.git",
       }
     }
   ]
