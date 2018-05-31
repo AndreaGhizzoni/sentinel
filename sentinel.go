@@ -21,7 +21,13 @@ const (
 	shellUsage   = "TODO usage"
 )
 
+func readEnvironment() {
+	gitter.Out = os.Getenv("SSH_GRAPHIC_INPUT")
+}
+
 func main() {
+	readEnvironment()
+
 	app := cli.NewApp()
 	app.Name = name
 	app.Version = version

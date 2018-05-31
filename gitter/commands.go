@@ -3,8 +3,11 @@ package gitter
 import (
 	"bytes"
 	"errors"
+	"os"
 	"os/exec"
 )
+
+var Out = "0"
 
 func getCommand(cmd string) (*exec.Cmd, error) {
 	switch cmd {
@@ -24,7 +27,9 @@ func runCommand(cmd *exec.Cmd) (string, error) {
 
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
-	//cmd.Stdin = os.Stdin
+	if Out == "0" {
+		cmd.Stdin = os.Stdin
+	}
 	if err := cmd.Run(); err != nil {
 		return "", err
 	}
