@@ -51,9 +51,9 @@ func runAsShell(c *cli.Context) {
 	shell.Println("Welcome to Sentinel")
 
 	var nmap = net.NewScanner("scan", "TODO help")
-	var gitter = gitter.NewGitter("gitter", "TODO help")
+	var git = gitter.NewGitter("gitter", "TODO help")
 	shell.AddCmd(nmap.GetIShellCommand())
-	shell.AddCmd(gitter.GetIShellCommand())
+	shell.AddCmd(git.GetIShellCommand())
 
 	shell.Run()
 }
