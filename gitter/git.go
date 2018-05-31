@@ -52,8 +52,7 @@ func (g *Gitter) Run() (string, error) {
 	}
 
 	green := color.New(color.FgHiGreen).SprintfFunc()
-	for i := 0; i < len(workspace.Languages); i++ {
-		var language = workspace.Languages[i]
+	for _, language := range workspace.Languages {
 		g.log(green("Processing Language: " + language.Name + "\n"))
 
 		var languagePath = workspace.Base + "/" + language.Name
