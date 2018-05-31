@@ -10,6 +10,11 @@
         "sudoku":"git@github.com:AndreaGhizzoni/sudoku.git",
         "subsetK":"git@github.com:AndreaGhizzoni/subsetK.git",
       }
+    },
+    {
+      "name":"go",
+      "command":"go get",
+      "repositories":{}
     }
   ]
 }
