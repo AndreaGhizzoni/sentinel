@@ -4,6 +4,7 @@
     {
       "name":"java",
       "command":"git",
+      "projects_folder":"",
       "repositories": {
         "it.unitn.disi.gef":"git@github.com:AndreaGhizzoni/it.unitn.disi.gef.git",
         "it.disi.unitn.emf.model":"git@github.com:AndreaGhizzoni/it.disi.unitn.emf.model.git",
@@ -28,6 +29,7 @@
     {
       "name":"go",
       "command":"go get",
+      "projects_folder":"/src/github.com/AndreaGhizzoni",
       "repositories": {
         "sentinel":"github.com/AndreaGhizzoni/sentinel",
         "zenium":"github.com/AndreaGhizzoni/zenium",
