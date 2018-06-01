@@ -1,5 +1,5 @@
 {
-  "base":"/home/andrea/Documents/workspace-test",
+  "base":"/home/andrea/work-test",
   "languages":[
     {
       "name":"java",
@@ -16,7 +16,34 @@
       "name":"go",
       "command":"go get",
       "projects_folder":"/src/github.com/AndreaGhizzoni",
-      "repositories":{}
+      "repositories":{
+        "zenium": "github.com/AndreaGhizzoni/zenium",
+        "factorial": "github.com/AndreaGhizzoni/factorial"
+      }
+    },
+    {
+      "name":"uni",
+      "command":"git",
+      "projects_folder": "",
+      "repositories":{
+        "ASD_Course":"git@bitbucket.org:andreaghizzoni/asd_course.git"
+      }
+    },
+    {
+      "name":"latex",
+      "command":"git",
+      "projects_folder": "",
+      "repositories":{
+        "BusinessCard":"git@bitbucket.org:andreaghizzoni/business-card.git"
+      }
+    },
+    {
+      "name":"web",
+      "command":"git",
+      "projects_folder": "",
+      "repositories":{
+        "andreaghizzoni.github.io":"git@bitbucket.org:andreaghizzoni/andreaghizzoni.github.io.git"
+      }
     }
   ]
 }
