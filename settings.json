@@ -6,10 +6,7 @@
       "command":"git",
       "projects_folder":"",
       "repositories": {
-        "graph":"git@github.com:AndreaGhizzoni/graph.git",
-        "tree":"git@github.com:AndreaGhizzoni/tree.git",
-        "sudoku":"git@github.com:AndreaGhizzoni/sudoku.git",
-        "subsetK":"git@github.com:AndreaGhizzoni/subsetK.git"
+        "graph":"git@github.com:AndreaGhizzoni/graph.git"
       }
     },
     {
