@@ -23,25 +23,68 @@
         "Simple-Logger":"git@github.com:AndreaGhizzoni/Simple-Logger.git",
         "Monitoring":"git@github.com:AndreaGhizzoni/Monitoring.git",
         "IOUtil":"git@github.com:AndreaGhizzoni/IOUtil.git",
-        "JXSwingPlus":"git@github.com:AndreaGhizzoni/JXSwingPlus.git"
+        "JXSwingPlus":"git@github.com:AndreaGhizzoni/JXSwingPlus.git",
+
+        "Client-Server":"git@bitbucket.org:andreaghizzoni/client-server.git",
+        "CommandLine":"git@bitbucket.org:andreaghizzoni/command-line.git",
+        "FRP":"git@bitbucket.org:andreaghizzoni/frp.git",
+        "NumeriPrimi":"git@bitbucket.org:andreaghizzoni/numeri-primi.git",
+        "SimpleDrawer":"git@bitbucket.org:andreaghizzoni/simpledrawer.git",
+        "SimpleFTPServer":"git@bitbucket.org:andreaghizzoni/simpleftpserver.git",
+        "TestGoogleAPI":"git@bitbucket.org:andreaghizzoni/test-google-api.git"
       }
     },
     {
-      "name":"go",
-      "command":"go get",
-      "projects_folder":"/src/github.com/AndreaGhizzoni",
+      "name": "go",
+      "command": "go get",
+      "projects_folder": "/src/github.com/AndreaGhizzoni",
       "repositories": {
-        "sentinel":"github.com/AndreaGhizzoni/sentinel",
-        "zenium":"github.com/AndreaGhizzoni/zenium",
-        "factorial":"github.com/AndreaGhizzoni/factorial",
-        "independent-set":"github.com/AndreaGhizzoni/independent-set",
-        "coins-change":"github.com/AndreaGhizzoni/coins-change",
-        "film-scan":"github.com/AndreaGhizzoni/film-scan",
-        "LCS":"github.com/AndreaGhizzoni/LCS",
-        "gin-app":"github.com/AndreaGhizzoni/gin-app",
-        "go-docker":"github.com/AndreaGhizzoni/go-docker",
-        "gos":"github.com/AndreaGhizzoni/gos",
-        "go-introduction":"github.com/AndreaGhizzoni/go-introduction",
+        "sentinel": "github.com/AndreaGhizzoni/sentinel",
+        "zenium": "github.com/AndreaGhizzoni/zenium",
+        "factorial": "github.com/AndreaGhizzoni/factorial",
+        "independent-set": "github.com/AndreaGhizzoni/independent-set",
+        "coins-change": "github.com/AndreaGhizzoni/coins-change",
+        "film-scan": "github.com/AndreaGhizzoni/film-scan",
+        "LCS": "github.com/AndreaGhizzoni/LCS",
+        "gin-app": "github.com/AndreaGhizzoni/gin-app",
+        "go-docker": "github.com/AndreaGhizzoni/go-docker",
+        "gos": "github.com/AndreaGhizzoni/gos",
+        "go-introduction": "github.com/AndreaGhizzoni/go-introduction"
+      }
+    },
+    {
+      "name":"uni",
+      "command":"git",
+      "projects_folder": "",
+      "repositories":{
+        "ASD_Course":"git@bitbucket.org:andreaghizzoni/asd_course.git",
+        "CPS_Course":"git@bitbucket.org:andreaghizzoni/cps_course.git",
+        "DB_Course":"git@bitbucket.org:andreaghizzoni/db_course.git",
+        "DIS1_Course":"git@bitbucket.org:andreaghizzoni/dis1_course.git",
+        "DIS2_Course":"git@bitbucket.org:andreaghizzoni/dis2_course.git",
+        "FP_Course":"git@bitbucket.org:andreaghizzoni/fp_course.git",
+        "LFC_Course":"git@bitbucket.org:andreaghizzoni/lfc_course.git",
+        "NETWORKS_Course":"git@bitbucket.org:andreaghizzoni/networks_course.git",
+        "Prog1":"git@bitbucket.org:andreaghizzoni/prog1.git",
+        "stage":"git@bitbucket.org:andreaghizzoni/stage.git"
+      }
+    },
+    {
+      "name":"latex",
+      "command":"git",
+      "projects_folder": "",
+      "repositories":{
+        "MyCV":"git@bitbucket.org:andreaghizzoni/my-cv.git",
+        "BusinessCard":"git@bitbucket.org:andreaghizzoni/business-card.git",
+        "templates":"git@bitbucket.org:andreaghizzoni/templates.git"
+      }
+    },
+    {
+      "name":"web",
+      "command":"git",
+      "projects_folder": "",
+      "repositories":{
+        "andreaghizzoni.github.io":"git@bitbucket.org:andreaghizzoni/andreaghizzoni.github.io.git"
       }
     }
   ]
