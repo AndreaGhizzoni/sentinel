@@ -5,6 +5,7 @@ import (
 	"github.com/abiosoft/ishell"
 	"github.com/fatih/color"
 	"log"
+	"os"
 )
 
 type Gitter struct {
@@ -63,10 +64,10 @@ func (g *Gitter) Run() (string, error) {
 			var out string
 			if folderNotExists(repoPath) {
 				g.log("[cloning] " + repoRemote + " -> " + repoPath + " ... ")
-				out, err = g.getProject(language.Command, repoRemote, repoPath)
+				out, err = g.getProject(language.Command, repoRemote, repoPath, language.ProjectsFolder)
 			} else {
 				g.log("[pulling] " + repoPath + " ... ")
-				out, err = g.updateProject(language.Command, repoPath)
+				out, err = g.updateProject(language.Command, repoRemote, repoPath, language.ProjectsFolder)
 			}
 			g.log(out)
 
@@ -86,12 +87,13 @@ func (g *Gitter) unlockKeys() error {
 	return err
 }
 
-func (g *Gitter) getProject(cmd, repoRemote, localRepoName string) (string, error) {
-	command, err := getProjectsCommand(cmd, repoRemote, localRepoName)
+func (g *Gitter) getProject(cmd, repoRemote, repoName, projectsFolder string) (string, error) {
+	command, err := getProjectsCommand(cmd, repoRemote, repoName)
 	if err != nil {
 		return "", err
 	}
 
+	os.Setenv("GOPATH", projectsFolder)
 	out, err := runCommand(command)
 	if err != nil {
 		return "", nil
@@ -104,13 +106,23 @@ func (g *Gitter) getProject(cmd, repoRemote, localRepoName string) (string, erro
 	return out, nil
 }
 
-func (g *Gitter) updateProject(cmd, repoPath string) (string, error) {
-	command, err := getUpdateCommand(cmd, repoPath)
+func (g *Gitter) updateProject(cmd, repoRemote, repoPath, projectsFolder string) (string, error) {
+	command, err := getUpdateCommand(cmd, repoRemote, repoPath)
 	if err != nil {
 		return "", nil
 	}
 
-	return runCommand(command)
+	os.Setenv("GOPATH", projectsFolder)
+	out, err := runCommand(command)
+	if err != nil {
+		return "", nil
+	}
+
+	if len(out) == 0 {
+		return "OK\n", nil
+	}
+
+	return out, nil
 }
 
 func (g *Gitter) run(c *ishell.Context) {
