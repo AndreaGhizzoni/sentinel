@@ -26,7 +26,7 @@
       "command":"git",
       "projects_folder": "",
       "repositories":{
-        "ASD_Course":"git@bitbucket.org:andreaghizzoni/asd_course.git"
+        "CPS_Course":"git@bitbucket.org:andreaghizzoni/cps_course.git"
       }
     },
     {
@@ -42,7 +42,7 @@
       "command":"git",
       "projects_folder": "",
       "repositories":{
-        "andreaghizzoni.github.io":"git@bitbucket.org:andreaghizzoni/andreaghizzoni.github.io.git"
+        "andreaghizzoni.github.io":"git@github.com:AndreaGhizzoni/andreaghizzoni.github.io.git"
       }
     }
   ]
