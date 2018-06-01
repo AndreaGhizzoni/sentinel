@@ -9,6 +9,43 @@ import (
 
 var AttachInput = "0"
 
+func getProjectsCommand(cmd, repoRemote, localRepoName string) (*exec.Cmd, error) {
+	command, err := getCommand(cmd)
+	if err != nil {
+		return nil, err
+	}
+
+	switch cmd {
+	case "git":
+		command.Args = append(command.Args, "clone", "-q", repoRemote, localRepoName)
+	case "go":
+		command.Args = append(command.Args, "-u", repoRemote)
+	default:
+		return nil, errors.New(cmd + ": Command Not found")
+	}
+
+	return command, nil
+}
+
+func getUpdateCommand(cmd, repoPath string) (*exec.Cmd, error) {
+	command, err := getCommand(cmd)
+	if err != nil {
+		return nil, err
+	}
+
+	switch cmd {
+	case "git":
+		command.Args = append(command.Args, "-C", repoPath, "pull", "origin",
+			"master")
+	case "go":
+		command.Args = append(command.Args, "-u", repoPath)
+	default:
+		return nil, errors.New(cmd + ": Command Not found")
+	}
+
+	return command, nil
+}
+
 func getCommand(cmd string) (*exec.Cmd, error) {
 	switch cmd {
 	case "git":
