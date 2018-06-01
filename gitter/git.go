@@ -36,14 +36,14 @@ func (g *Gitter) Run() (string, error) {
 
 	g.log("Start checking workspace...\n")
 	g.log("Base: " + workspace.Base + " .... ")
-	baseHasBeenCreated, err := createFolderIfNotExists(workspace.Base)
-	if err != nil {
+	if baseHasBeenCreated, err := workspace.BuildBaseFolderStructure(); err != nil {
 		return "", err
-	}
-	if baseHasBeenCreated {
-		g.log("Created\n")
 	} else {
-		g.log("Exists\n")
+		if baseHasBeenCreated {
+			g.log("Created\n")
+		} else {
+			g.log("Exists\n")
+		}
 	}
 
 	g.log("Unlocking Keys...\n")
@@ -55,24 +55,20 @@ func (g *Gitter) Run() (string, error) {
 	for _, language := range workspace.Languages {
 		g.log(green("Processing Language: " + language.Name + "\n"))
 
-		var languagePath = workspace.Base + "/" + language.Name
-		_, err := createFolderIfNotExists(languagePath)
-		if err != nil {
-			return "", nil
-		}
+		language.BuildFolderStructure(workspace.Base)
 
 		for repoName, repoRemote := range language.Repositories {
-			var repoPath = languagePath + "/" + repoName
+			var repoPath = language.ProjectsFolder + "/" + repoName
 			var err error
 			var out string
 			if folderNotExists(repoPath) {
 				g.log("[cloning] " + repoRemote + " -> " + repoPath + " ... ")
-				out, err = g.clone(language.Command, repoRemote, repoPath)
+				out, err = g.getProject(language.Command, repoRemote, repoPath)
 			} else {
 				g.log("[pulling] " + repoPath + " ... ")
-				out, err = g.pull(language.Command, repoPath)
+				out, err = g.updateProject(language.Command, repoPath)
 			}
-			g.log(out + "\n")
+			g.log(out)
 
 			if err != nil {
 				return "", err
@@ -90,31 +86,31 @@ func (g *Gitter) unlockKeys() error {
 	return err
 }
 
-func (g *Gitter) clone(cmd, repoRemote, localRepoName string) (string, error) {
-	gitCmd, err := getCommand(cmd)
+func (g *Gitter) getProject(cmd, repoRemote, localRepoName string) (string, error) {
+	command, err := getProjectsCommand(cmd, repoRemote, localRepoName)
 	if err != nil {
 		return "", err
 	}
-	gitCmd.Args = append(gitCmd.Args, "clone", "-q", repoRemote, localRepoName)
-	out, err := runCommand(gitCmd)
+
+	out, err := runCommand(command)
 	if err != nil {
-		return "", err
+		return "", nil
 	}
 
 	if len(out) == 0 {
-		return "OK", nil
+		return "OK\n", nil
 	}
+
 	return out, nil
 }
 
-func (g *Gitter) pull(cmd, repoPath string) (string, error) {
-	gitCmd, err := getCommand(cmd)
+func (g *Gitter) updateProject(cmd, repoPath string) (string, error) {
+	command, err := getUpdateCommand(cmd, repoPath)
 	if err != nil {
-		return "", err
+		return "", nil
 	}
-	gitCmd.Args = append(gitCmd.Args, "-C", repoPath, "pull", "origin",
-		"master")
-	return runCommand(gitCmd)
+
+	return runCommand(command)
 }
 
 func (g *Gitter) run(c *ishell.Context) {
