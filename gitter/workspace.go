@@ -33,18 +33,15 @@ func NewWorkspace() (*Workspace, error) {
 	if err := json.Unmarshal(byteValue, &workspace); err != nil {
 		return nil, err
 	}
-
-	if err := workspace.BuildBaseFolderStructure(); err != nil {
-		return nil, err
-	}
 	return workspace, nil
 }
 
-func (w *Workspace) BuildBaseFolderStructure() error {
-	if _, err := createFolderIfNotExists(w.Base); err != nil {
-		return err
+func (w *Workspace) BuildBaseFolderStructure() (bool, error) {
+	if hasBeenCreated, err := createFolderIfNotExists(w.Base); err != nil {
+		return hasBeenCreated, err
+	} else {
+		return hasBeenCreated, nil
 	}
-	return nil
 }
 
 func (w *Workspace) String() string {
