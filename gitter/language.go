@@ -8,17 +8,14 @@ type Language struct {
 }
 
 func (l *Language) BuildFolderStructure(base string) error {
-	switch l.Name {
-	case "java":
-		return l.buildJavaFolderStructure(base)
-	case "go":
+	if l.Name == "go" {
 		return l.buildGoFolderStructure(base)
-	default:
-		return nil
+	} else {
+		return l.buildFolderStructure(base)
 	}
 }
 
-func (l *Language) buildJavaFolderStructure(base string) error {
+func (l *Language) buildFolderStructure(base string) error {
 	var languagePath = base + "/" + l.Name
 	if _, err := createFolderIfNotExists(languagePath); err != nil {
 		return err
@@ -27,7 +24,7 @@ func (l *Language) buildJavaFolderStructure(base string) error {
 	if len(l.ProjectsFolder) == 0 {
 		l.ProjectsFolder = languagePath
 	} else {
-		l.ProjectsFolder = languagePath + "/" + l.ProjectsFolder
+		l.ProjectsFolder = languagePath + l.ProjectsFolder
 	}
 	return nil
 }
@@ -52,7 +49,7 @@ func (l *Language) buildGoFolderStructure(base string) error {
 	if len(l.ProjectsFolder) == 0 {
 		l.ProjectsFolder = dirs[0]
 	} else {
-		l.ProjectsFolder = dirs[0] + "/" + l.ProjectsFolder
+		l.ProjectsFolder = dirs[0] + l.ProjectsFolder
 	}
 	return nil
 }

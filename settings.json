@@ -11,7 +11,7 @@
     },
     {
       "name":"go",
-      "command":"go get",
+      "command":"go",
       "projects_folder":"/src/github.com/AndreaGhizzoni",
       "repositories":{
         "zenium": "github.com/AndreaGhizzoni/zenium",
