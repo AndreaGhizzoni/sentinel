@@ -46,6 +46,9 @@ func (l *Language) buildGoFolderStructure(base string) error {
 		}
 	}
 
+	// TODO
+	// in the case of golang, the default "projects_folder" could be
+	// /src/github.com/<username>
 	if len(l.ProjectsFolder) == 0 {
 		l.ProjectsFolder = dirs[0]
 	} else {
