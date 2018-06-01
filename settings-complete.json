@@ -84,7 +84,7 @@
       "command":"git",
       "projects_folder": "",
       "repositories":{
-        "andreaghizzoni.github.io":"git@bitbucket.org:andreaghizzoni/andreaghizzoni.github.io.git"
+        "andreaghizzoni.github.io":"git@github.com:AndreaGhizzoni/andreaghizzoni.github.io.git"
       }
     }
   ]
