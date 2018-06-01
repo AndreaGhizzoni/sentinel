@@ -4,6 +4,7 @@
     {
       "name":"java",
       "command":"git",
+      "projects_folder":"",
       "repositories": {
         "graph":"git@github.com:AndreaGhizzoni/graph.git",
         "tree":"git@github.com:AndreaGhizzoni/tree.git",
@@ -14,6 +15,7 @@
     {
       "name":"go",
       "command":"go get",
+      "projects_folder":"/src/github.com/AndreaGhizzoni",
       "repositories":{}
     }
   ]
